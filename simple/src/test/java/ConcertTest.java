@@ -14,7 +14,7 @@ public class ConcertTest {
     Performance performance;
 
     @Test
-    public void test1() throws Exception {
+    public void testAspect() throws Exception {
         performance.perform();
     }
 }

@@ -1,5 +1,6 @@
 package root.aspects;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
@@ -28,5 +29,16 @@ public class Audience {
     @AfterThrowing("performance()")
     public void demandRefand(){
         System.out.println("Demanding a refund");
+    }
+
+    @Around("performance()")
+    public void watchPerformance(ProceedingJoinPoint joinPoint){
+        try{
+            System.out.println("*** Performance started ***");
+            joinPoint.proceed();
+            System.out.println("*** Performance finished ***");
+        }catch (Throwable e){
+            System.out.println("CRAP");
+        }
     }
 }
